@@ -1,18 +1,13 @@
-(* Drew Martin
-Program 2
-IT 327 *)
-(* Chapter 7, exercise 5 *)
+(* Drew Martin *)
 (* Take polynomial and a value for x and return the value of that polynomial at given x *)
 fun helperFunct ([], _) = 0.0 | helperFunct (head::tail, x) =
     x * head + helperFunct (tail, x * x);
 fun eval ([], _) = 0.0 | eval (head::tail, x) = head + helperFunct (tail, x);
 
-(* Chapter 9, exercise 23 *)
 (* Converts a list of pairs into a pair of lists *)
 fun convert pairlist = 
     foldr (fn ((h1, t1), (h2, t2)) => (h1::h2, t1::t2)) ([], []) pairlist;
 
-(* Chapter 9, exercise 25 name this function evalm *)
 (* Same as the first function, but makes it a curried one liner *)
 fun evalm poly valx = foldr (fn (y, x) => y + valx * x) 0.0 poly;
 
